@@ -11,7 +11,7 @@ CUANDO PULSES EN LA CATEGORIA TE MUESTRE UNA BROMA DE ESA CATEGORIA
 ADEMAS DE LAS CATEGORIAS QUE TENGA UN BOTON CON UNA BROMA ALEATORIA*/
 
     @GET("/jokes/categories/")
-    suspend fun getCategoryList(): Response<List<JokeCategory>>
+    suspend fun getCategoryList(): Response<List<String>>
     //Call<List<String>> me permite usar .enqueue, Response<List<String>> no
 
     @GET("/jokes/random?category={category}")
