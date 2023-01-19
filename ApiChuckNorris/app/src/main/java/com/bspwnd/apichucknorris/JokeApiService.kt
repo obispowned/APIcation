@@ -1,6 +1,5 @@
 package com.bspwnd.apichucknorris
 
-import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -15,7 +14,7 @@ ADEMAS DE LAS CATEGORIAS QUE TENGA UN BOTON CON UNA BROMA ALEATORIA*/
     //Call<List<String>> me permite usar .enqueue, Response<List<String>> no
 
     @GET("/jokes/random?category={category}")
-    suspend fun geytRandomCategoryQuote(@Path("category") category: String): Call<String>
+    suspend fun getRandomCategoryJoke(@Path("category") category: String): Response<String>
 
     @GET("/jokes/random/")
     suspend fun fullRandomQuote()
