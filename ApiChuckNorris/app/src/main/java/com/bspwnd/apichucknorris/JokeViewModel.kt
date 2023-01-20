@@ -18,8 +18,6 @@ class JokeViewModel: ViewModel()  {
             viewModelScope.launch{
                 val api = serviceCreator()
                 val response = api.getCategoryList() /**/
-                Log.d("responseCategory", response.toString())
-                Log.d("responseCategory.body", response.body().toString())
                 if (response.isSuccessful){
                     val jokes = response.body()
                     mutableCategory.value = jokes as MutableList<String>
@@ -32,9 +30,7 @@ class JokeViewModel: ViewModel()  {
     {
         viewModelScope.launch{
             val api = serviceCreator()
-            val response = api.getRandomCategoryJoke(cat) /**/
-            Log.d("responseJoke", response.toString())
-            Log.d("responseJoke.body", response.body().toString())
+            val response = api.getRandomCategoryJoke(cat)
             if (response.isSuccessful){
                 response.body()?.let { mutableJoke.value = it }
             }

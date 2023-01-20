@@ -1,9 +1,7 @@
 package com.bspwnd.apichucknorris
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
-import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -20,7 +18,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var jokeViewModel: JokeViewModel
     private lateinit var layoutBinding: InfoJokeBinding
-    var posix = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,24 +41,22 @@ class MainActivity : AppCompatActivity() {
 
     fun onItemSelected(cat: String){
         jokeViewModel.jokesFromCategories(cat)
-        jokeViewModel.mutableJoke.observe(this, Observer {
-            Log.d("** mutableJoke", jokeViewModel.mutableJoke.value.toString())
-            initAlertDialog(jokeViewModel.mutableJoke)
-        })
-    }
-
-    fun initAlertDialog(mutablejoke: MutableLiveData<Joke>){
         layoutBinding = InfoJokeBinding.inflate(LayoutInflater.from(this))
         val builder = AlertDialog.Builder(this)
         builder.setView(layoutBinding.root)
         val dialog = builder.create()
-
-        layoutBinding.infoCategory.text = "Category: " + mutablejoke.value?.categories.toString()
-        layoutBinding.infoCreated.text = "Created at: " + mutablejoke.value?.createdAt.toString()
-        layoutBinding.infoValue.text = "Value: " + mutablejoke.value?.value.toString()
-
-
+        jokeViewModel.mutableJoke.observe(this, Observer {
+            alertDialogParams(jokeViewModel.mutableJoke, dialog)
+        })
         dialog.show()
+    }
+
+    fun alertDialogParams(mutablejoke: MutableLiveData<Joke>, dialog: AlertDialog){
+        layoutBinding.infoCategory.text = "Category: " + mutablejoke.value?.categories.toString()
+            .substring(1, mutablejoke.value?.categories.toString().length-1).toUpperCase()
+        layoutBinding.infoCreated.text = "Created at: " + mutablejoke.value?.createdAt.toString()
+        layoutBinding.infoValue.text = "Joke: \n" + mutablejoke.value?.value.toString()
+        layoutBinding.button.setOnClickListener {  dialog.dismiss() }
     }
 
     private fun refreshApp(){
