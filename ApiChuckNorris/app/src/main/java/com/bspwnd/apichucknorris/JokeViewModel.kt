@@ -1,5 +1,6 @@
 package com.bspwnd.apichucknorris
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -10,13 +11,15 @@ import retrofit2.converter.gson.GsonConverterFactory
 class JokeViewModel: ViewModel()  {
 
     val mutableCategory: MutableLiveData<MutableList<String>> = MutableLiveData()
-    val mutableJoke: MutableLiveData<MutableLiveData<Joke>> = MutableLiveData()
+    var mutableJoke: MutableLiveData<Joke> = MutableLiveData()
 
     init {
         kotlin.run {
             viewModelScope.launch{
                 val api = serviceCreator()
                 val response = api.getCategoryList() /**/
+                Log.d("responseCategory", response.toString())
+                Log.d("responseCategory.body", response.body().toString())
                 if (response.isSuccessful){
                     val jokes = response.body()
                     mutableCategory.value = jokes as MutableList<String>
@@ -25,14 +28,15 @@ class JokeViewModel: ViewModel()  {
         }
     }
 
-    private fun jokesFromCategories(cat: String)
+    fun jokesFromCategories(cat: String)
     {
         viewModelScope.launch{
             val api = serviceCreator()
             val response = api.getRandomCategoryJoke(cat) /**/
+            Log.d("responseJoke", response.toString())
+            Log.d("responseJoke.body", response.body().toString())
             if (response.isSuccessful){
-                val jokes = response.body()
-                mutableJoke.value = jokes as MutableLiveData<Joke>
+                response.body()?.let { mutableJoke.value = it }
             }
         }
     }

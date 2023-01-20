@@ -2,23 +2,29 @@ package com.bspwnd.apichucknorris
 
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bspwnd.apichucknorris.adapter.JokeAdapter
 import com.bspwnd.apichucknorris.databinding.ActivityMainBinding
+import com.bspwnd.apichucknorris.databinding.InfoJokeBinding
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var jokeViewModel: JokeViewModel
+    private lateinit var layoutBinding: InfoJokeBinding
+    var posix = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         binding.lifecycleOwner = this
         jokeViewModel = ViewModelProvider(this)[JokeViewModel::class.java]
@@ -37,19 +43,23 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun onItemSelected(cat: String){
+        jokeViewModel.jokesFromCategories(cat)
         jokeViewModel.mutableJoke.observe(this, Observer {
-            Log.d("PROBANDO2", cat)
+            Log.d("** mutableJoke", jokeViewModel.mutableJoke.value.toString())
+            initAlertDialog(jokeViewModel.mutableJoke)
         })
-        initAlertDialog(cat)
     }
 
-    fun initAlertDialog(cat: String){
+    fun initAlertDialog(mutablejoke: MutableLiveData<Joke>){
+        layoutBinding = InfoJokeBinding.inflate(LayoutInflater.from(this))
         val builder = AlertDialog.Builder(this)
-        val view = layoutInflater.inflate(R.layout.info_joke, null)
-        builder.setView(view) //pasamos la vista al builder
+        builder.setView(layoutBinding.root)
         val dialog = builder.create()
 
-        view.findViewById<TextView>(R.id.infoCategory).text = "Category: " + cat
+        layoutBinding.infoCategory.text = "Category: " + mutablejoke.value?.categories.toString()
+        layoutBinding.infoCreated.text = "Created at: " + mutablejoke.value?.createdAt.toString()
+        layoutBinding.infoValue.text = "Value: " + mutablejoke.value?.value.toString()
+
 
         dialog.show()
     }
