@@ -17,3 +17,6 @@ Los chistes están divididos en cateorías y al elegir una categoría se muestra
 - API REST mediante Retrofit
 - Corrutinas (lifecycle y ViewModelScope)
 - RecyclerView (Adapter y ViewHolder)
+
+
+<img alt="Chuck Norris Jokes Api - JSON API for random Chuck Norris jokes" src="/img/chucknorris_logo_coloured_small.png" srcset="/img/chucknorris_logo_coloured_small@2x.png 720w">
