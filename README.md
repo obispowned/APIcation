@@ -8,13 +8,14 @@ Los chistes están divididos en cateorías y al elegir una categoría se muestra
 <div align="center">
 ## La aplicacion hace uso de:
 </div>
+<p>
 - Arquitectura MVVM
 - dataBinding
 - viewModel con LiveData y observer
 - API REST mediante Retrofit
 - Corrutinas (lifecycle y ViewModelScope)
 - RecyclerView (Adapter y ViewHolder)
-
+</p>
 <div align="center">
   ## Endpoint:
 </div>
