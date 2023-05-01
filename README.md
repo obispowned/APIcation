@@ -22,5 +22,5 @@ Los chistes están divididos en cateorías y al elegir una categoría se muestra
 (https://api.chucknorris.io/)
 
 <div align="center">
-  <img alt="Chuck Norris Jokes Api - JSON API for random Chuck Norris jokes" src="https://api.chucknorris.io/img/chucknorris_logo_coloured_small@2x.png" width="50%">
+  <img alt="Chuck Norris Jokes Api - JSON API for random Chuck Norris jokes" src="https://api.chucknorris.io/img/chucknorris_logo_coloured_small@2x.png" width="30%">
 </div>
