@@ -5,6 +5,7 @@ Una aplicacion de chistes de Chuck Norris.
 Los chistes están divididos en cateorías y al elegir una categoría se muestra un chiste al azar.
 
 
+
 ## La aplicacion hace uso de:
 
 - Arquitectura MVVM</p>
@@ -15,7 +16,8 @@ Los chistes están divididos en cateorías y al elegir una categoría se muestra
 - RecyclerView (Adapter y ViewHolder)</p>
 
 
-  ## Endpoint:
+
+## Endpoint:
   
 (https://api.chucknorris.io/)
 
