@@ -1,11 +1,10 @@
 # APIcation
 
-Una aplicacion de consumo de API. Simplemente es una aplicacion de chistes de Chuck Norris.
-Los chistes están divididos en cateorías y al elegir una categoría, se muestra un chiste al azar
-Aplicación puramente didáctica para hacer pruebas con retrofit y otros elementos.
+Una aplicacion de chistes de Chuck Norris.
+Los chistes están divididos en cateorías y al elegir una categoría se muestra un chiste al azar.
 
 
-## El endpoint
+## Endpoint:
 
 (https://api.chucknorris.io/)
 
