@@ -1,13 +1,20 @@
 # APIcation
-MVVM + viewModel + Retrofit + Coroutines + LiveData + Observer + ReciclerView
 
-Aplicación didactica para mostrar chistes de Chuck Norris ordenados por categorias.
+Una aplicacion de consumo de API. Simplemente es una aplicacion de chistes de Chuck Norris.
+Los chistes están divididos en cateorías y al elegir una categoría, se muestra un chiste al azar
+Aplicación puramente didáctica para hacer pruebas con retrofit y otros elementos.
+
+
+## El endpoint
+
 (https://api.chucknorris.io/)
 
-Aprendizaje de:
+
+## La aplicacion hace uso de:
+
 - Arquitectura MVVM
-- viewModel con dataBinding
-- Uso de LiveData y Observer
+- dataBinding
+- viewModel con LiveData y observer
 - API REST mediante Retrofit
 - Corrutinas (lifecycle y ViewModelScope)
 - RecyclerView (Adapter y ViewHolder)
