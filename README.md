@@ -1,21 +1,22 @@
 <div align="center">
-
 # APIcation
 </div>
+
 Una aplicacion de chistes de Chuck Norris.
 Los chistes están divididos en cateorías y al elegir una categoría se muestra un chiste al azar.
 
 <div align="center">
 ## La aplicacion hace uso de:
 </div>
-<p>
-- Arquitectura MVVM
-- dataBinding
-- viewModel con LiveData y observer
-- API REST mediante Retrofit
-- Corrutinas (lifecycle y ViewModelScope)
-- RecyclerView (Adapter y ViewHolder)
-</p>
+
+
+<p>- Arquitectura MVVM</p>
+<p>- dataBinding</p>
+<p>- viewModel con LiveData y observer</p>
+<p>- API REST mediante Retrofit</p>
+<p>- Corrutinas (lifecycle y ViewModelScope)</p>
+<p>- RecyclerView (Adapter y ViewHolder)</p>
+
 <div align="center">
   ## Endpoint:
 </div>
